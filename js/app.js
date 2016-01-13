@@ -44,7 +44,7 @@ function onSuccess(contacts) {
         html += '</li>';
     }
     $("#contactsList").html(html);
-    $("#contactsList").listview('refresh');
+    $("#contactsList").listview.listview('refresh');
     $.mobile.loading("hide");
     $("body").removeClass('ui-disabled');
 }
