@@ -25,7 +25,7 @@ function onSuccess(contacts) {
             if (contacts[i].phoneNumbers) {
                 html += '<ul class="innerlsv" data-role="listview" data-inset="true">';
                 for (var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                    html += "<li>Number: <a href='tel:" + contacts[i].phoneNumbers[j].value + "'></a></li>";
+                    html += "<li>Number: <a href='tel:" + contacts[i].phoneNumbers[j].value + "'>" + contacts[i].phoneNumbers[j].value + "</a></li>";
                 }
                 html += "</ul>";
             }
