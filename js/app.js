@@ -1,21 +1,17 @@
 ﻿document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    // we will not be doing anything!!
+    var options = new ContactFindOptions();
+    options.filter = '';
+    options.multiple = true;
+    var filter = ['displayName'];
+    navigator.contacts.find(filter, onSuccess, onError, options);
 }
 
 $(document).on("pageshow", function () {
-    $.mobile.loading("hide");
-    $("body").removeClass('ui-disabled');
-    if ($("#contactsList").length == 1) {
+    if ($("#addContact").length == 1) {
         $("body").addClass('ui-disabled').css("background", "#000");
         $.mobile.loading("show");
-        var options = new ContactFindOptions();
-        options.filter = "";
-        options.multiple = true;
-        var filter = ['displayName'];
-        navigator.contacts.find(filter, onSuccess, onError, options);
-    } else if ($("#addContact").length == 1) {
         bindAddContactEvents();
     }
 });
@@ -45,8 +41,6 @@ function onSuccess(contacts) {
     $("#contactsList").html(html);
     $("#contactsList").listview().listview('refresh');
     $(".innerlsv").listview().listview('refresh');
-    $.mobile.loading("hide");
-    $("body").removeClass('ui-disabled');
 }
 
 function onError(contactError) {
@@ -56,6 +50,8 @@ function onError(contactError) {
 }
 
 function bindAddContactEvents() {
+    $.mobile.loading("hide");
+    $("body").removeClass('ui-disabled');
     $("#addContact").on("click", function () {
         var name = $.trim($("#name").val()),
             number = $.trim($("#number").val());

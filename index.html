@@ -11,12 +11,12 @@
     <div data-role="page">
         <div data-role="header" data-position="fixed" data-theme="b" data-add-back-btn="true">
             <h1>Contacts</h1>
+            <a href="views/add.html" data-icon="plus" class="ui-btn-right">Add</a>
         </div>
         <div data-role="content">
-            <ul data-role="listview" data-inset="true">
-                <li data-icon="plus"><a href="views/add.html">Add New Contact</a>
-                </li>
-                <li data-icon="search"><a href="views/find.html">Find Contact</a>
+            <ul id="contactsList" data-role="listview" data-filter="true" data-filter-placeholder="Search Contacts" data-inset="true">
+                <li>
+                    <h2>No record found!</h2>
                 </li>
             </ul>
         </div>
