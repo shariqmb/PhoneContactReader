@@ -9,6 +9,7 @@
   <author>
     Deescorp
   </author>
+  <gap:plugin name="com.plugins.shortcut" />
   <gap:plugin name="org.apache.cordova.contacts" />
   <preference name="phonegap-version" value="cli-5.2.0" />
   <feature name="http://api.phonegap.com/1.0/contacts"/>

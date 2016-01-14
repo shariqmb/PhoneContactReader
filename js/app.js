@@ -1,4 +1,5 @@
-﻿document.addEventListener("deviceready", onDeviceReady, false);
+﻿var backpressed = false;
+document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     var options = new ContactFindOptions();
@@ -25,7 +26,8 @@ function onSuccess(contacts) {
             if (contacts[i].phoneNumbers) {
                 html += '<ul class="innerlsv" data-role="listview" data-inset="true">';
                 for (var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                    html += "<li>Number: " + contacts[i].phoneNumbers[j].value + "</li>";
+                    html += "<li>Number: <a href='tel:" + contacts[i].phoneNumbers[j].value + "</a><br/>" +
+                       "Email: " + contacts[i].emails[j] ? contacts[i].emails[j].value : " - " + "</li>";
                 }
                 html += "</ul>";
             }
@@ -86,4 +88,14 @@ function createError() {
 function resetPage() {
     $("#name").val("");
     $("#number").val("");
+}
+
+function onBackPress(e) {
+    e.preventDefault();
+    if (!backpressed) {
+        $("#exit_popup").popup("open");
+        backpressed = true;
+    } else {
+        navigator.app.exitApp();
+    }
 }
