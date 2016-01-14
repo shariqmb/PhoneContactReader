@@ -1,6 +1,8 @@
 ﻿document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+    $("body").addClass('ui-disabled').css("background", "#000");
+    $.mobile.loading("show");
     var options = new ContactFindOptions();
     options.filter = '';
     options.multiple = true;
@@ -20,16 +22,18 @@ function onSuccess(contacts) {
     var html = "";
     for (var i = 0; i < contacts.length; i++) {
         if ($.trim(contacts[i].displayName).length != 0 || $.trim(contacts[i].nickName).length != 0) {
-            html += '<li>';
-            html += '<h2>' + contacts[i].displayName ? contacts[i].displayName : contacts[i].nickName + '</h2>';
-            if (contacts[i].phoneNumbers) {
-                html += '<ul class="innerlsv" data-role="listview" data-inset="true">';
-                for (var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                    html += "<li>Value: " + contacts[i].phoneNumbers[j].value + "</li>";
+            if (contacts[i].phoneNumbers.value != '') {
+                html += '<li>';
+                html += '<h2>' + contacts[i].displayName ? contacts[i].displayName : contacts[i].nickName + '</h2>';
+                if (contacts[i].phoneNumbers) {
+                    html += '<ul class="innerlsv" data-role="listview" data-inset="true">';
+                    for (var j = 0; j < contacts[i].phoneNumbers.length; j++) {
+                        html += "<li>Number: " + contacts[i].phoneNumbers[j].value + "</li>";
+                    }
+                    html += "</ul>";
                 }
-                html += "</ul>";
-            }
-            html += '</li>';
+                html += '</li>';
+            }           
         }
     }
     if (contacts.length === 0) {
@@ -41,6 +45,8 @@ function onSuccess(contacts) {
     $("#contactsList").html(html);
     $("#contactsList").listview().listview('refresh');
     $(".innerlsv").listview().listview('refresh');
+    $.mobile.loading("hide");
+    $("body").removeClass('ui-disabled');
 }
 
 function onError(contactError) {
