@@ -23,144 +23,21 @@
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <div id="full_list_button_container"></div>
             <h3>Contacts</h3>
-            <a href="#options_popup" id="options_button" data-rel="popup" data-role="button" data-mini="true" class="ui-btn-right">Options</a>
-            <div data-role="popup" id="options_popup" data-theme="none">
-                <div data-role="collapsible-set">
-                    <div id="search_chooser_button" data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false" data-collapsed="true">
-                        <h2 onclick='openSearchChooser(event);'>Advanced search</h2>
-                    </div>
-                    <div data-role="collapsible" data-content-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false" data-collapsed="true">
-                        <h2>Contacts sort order...</h2>
-                        <ul data-role="listview">
-                            <li><a href="#cont_list_page" onclick="setSortPref(0)">Ascending</a></li>
-                            <li><a href="#cont_list_page" onclick="setSortPref(1)">Descending</a></li>
-                        </ul>
-                    </div>
-                    <div data-role="collapsible" data-content-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false" data-collapsed="true">
-                        <h2>Display contact name as...</h2>
-                        <ul data-role="listview">
-                            <li><a href="#cont_list_page" onclick="setDisplPref(0)">Name Surname</a></li>
-                            <li><a href="#cont_list_page" onclick="setDisplPref(1)">Surname Name</a></li>
-                        </ul>
-                    </div>
-                    <div id="new_contact_button" data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="false" data-collapsed="true">
-                        <h2 onclick="onNewContact(event);">New contact</h2>
-                    </div>
-                </div>
-            </div>
         </div>
         <div data-role="content">
-            <div id="contacts_list">
-            </div>
-            <div data-role="popup" id="exit_popup" class="ui-content" data-history="false">
-                <p>Press backbutton again to exit the application.</p>
-            </div>
+            <ul id="contacts_list" data-role="listview" data-filter="true" data-filter-placeholder="Search Contacts" data-inset="true">
+                <li>
+                    <h2>Loading Contacts..</h2>
+                </li>
+            </ul>
         </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-            <label for="search-input"></label>
-            <input type="search" name="search-input" id="search-input" placeholder="Find contact" data-icon="search" />
+        <div data-role="popup" id="exit_popup" class="ui-content" data-history="false">
+            <p>Press back button again to exit the application.</p>
         </div>
     </div>
-    <div data-role="page" id="searchby_chooser_page">
-        <div data-role="header" data-position="fixed">
-            <h3>Advanced search</h3>
-        </div>
-        <div data-role="content">
-            <div>
-                <label for="searchby_chooser_input">Choose a search criteria:</label>
-                <select id='searchby_chooser_input' name='searchby_chooser_input' data-mini='true'>
-                    <option value='name'>Name</option>
-                    <option value='nickname'>Nickname</option>
-                    <option value='phoneNumbers' selected='selected'>Phone</option>
-                    <option value='emails'>Email</option>
-                    <option value='ims'>IM</option>
-                    <option value='urls'>URL</option>
-                    <option value='addresses'>Address</option>
-                    <option value='organizations'>Organization</option>
-                </select>
-
-                <label for="search_val_input">Enter the value to search for:</label>
-                <input id="search_val_input" name="search_val_input" type="text" />
-
-                <div style="width: 100%; margin: 0 auto; margin-left: auto; margin-right: auto; align: center; text-align: center;">
-                    <a href="#" id="searchby_chooser_ok_button" data-role="button" data-inline="true">Search</a>
-                </div>
-            </div>
-        </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <h3>Deescorp - All rigths reserved  </h3>
     </div>
-    <div data-role="page" id="cont_info_page">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <a href="#cont_list_page" id="contact_info_cancel_button" data-role="button" data-mini="true" class="ui-btn-left">Cancel</a>
-            <h3>Contact Info</h3>
-            <a href="#cont_options_popup" data-rel="popup" data-role="button" data-mini="true" class="ui-btn-right">Options</a>
-            <div data-role="popup" id="cont_options_popup" data-theme="none">
-                <ul data-role="listview" data-mini="true">
-                    <li><a href="#" id="clone_contact_button">Create contact copy</a></li>
-                    <li><a href="#" id="edit_contact_button">Edit contact</a></li>
-                    <li><a href="#remove_dialog" data-rel="dialog">Remove contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div data-role="content">
-            <div id="contact_info">
-            </div>
-        </div>
-    </div>
-    <div data-role="page" id="remove_dialog">
-        <div data-role="header" data-position="fixed">
-            <h3>Remove contact</h3>
-        </div>
-        <div data-role="content">
-            <p>Are you sure you want to remove this contact?</p>
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#cont_info_page" id="remove_cancel_button" data-role="button">No!</a></div>
-                <div class="ui-block-b"><a href="#" id="remove_ok_button" data-role="button">Definitely</a></div>
-            </div>
-        </div>
-    </div>
-    <div data-role="page" id="edit_contact_page">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <a href="#" id="new_contact_cancel_button" data-role="button" data-mini="true" class="ui-btn-left">Cancel</a>
-            <h3>Edit contact</h3>
-        </div>
-        <div data-role="content">
-            <form name="new_contact_form" id="new_contact_form">
-            </form>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-            <div id="new_contact_toolbar" data-role="navbar">
-                <ul>
-                    <li>
-                        <a href="#" id="new_contact_cancel_nav" data-mini="true">Cancel</a>
-                    </li>
-                    <li>
-                        <a href="#" id="new_contact_ok_nav" data-mini="true">Save</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div data-role="page" id="item_chooser_page">
-        <div data-role="header" data-position="fixed">
-            <h3>Choose new item type</h3>
-        </div>
-        <div data-role="content">
-            <div>
-                <label for="item_chooser_input">Choose an item type:</label>
-                <select id='item_chooser_input' name='item_chooser_input' data-mini='true'>
-                    <option value='phoneNumbers' selected='selected'>Phone number</option>
-                    <option value='emails'>Email</option>
-                    <option value='ims'>IM</option>
-                    <option value='urls'>URL</option>
-                    <option value='addresses'>Address</option>
-                    <option value='organizations'>Organization</option>
-                    <option value='note'>Note</option>
-                </select>
-                <div style="width: 100%; margin: 0 auto; margin-left: auto; margin-right: auto; align: center; text-align: center;">
-                    <a href="#" id="item_chooser_ok_button" data-role="button" data-inline="true">Ok</a>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
