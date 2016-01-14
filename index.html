@@ -3,41 +3,30 @@
 <head>
     <title>Phone Contact Reader</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
-    <script src="cordova.js"></script>
-    <script type="text/javascript" src="lib/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="lib/jquery.mobile-1.2.0.min.js"></script>
-    <script type="text/javascript" src="js/contacts.js"></script>
-    <script type="text/javascript" src="js/photochooser.js"></script>
-    <script type="text/javascript" src="js/contacts.displist.js"></script>
-    <script type="text/javascript" src="js/contacts.form.js"></script>
-    <script type="text/javascript" src="js/common.utils.js"></script>
-
-    <link rel="stylesheet" href="lib/jquery.mobile-1.2.0.min.css" />
+    <link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/contacts.css" type="text/css">
 </head>
 
-<body onload="onLoad()">
-
-    <!-- Contacts list page -->
-    <div data-role="page" id="cont_list_page">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <div id="full_list_button_container"></div>
-            <h3>Contacts</h3>
+<body>
+    <div data-role="page">
+        <div data-role="header" data-position="fixed" data-theme="b" data-add-back-btn="true">
+            <h1>Contacts</h1>
         </div>
         <div data-role="content">
-            <ul id="contacts_list" data-role="listview" data-filter="true" data-filter-placeholder="Search Contacts" data-inset="true">
-                <li>
-                    <h2>Loading Contacts..</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="plus"><a href="views/add.html">Add New Contact</a>
+                </li>
+                <li data-icon="search"><a href="views/find.html">Find Contact</a>
                 </li>
             </ul>
         </div>
-        <div data-role="popup" id="exit_popup" class="ui-content" data-history="false">
-            <p>Press back button again to exit the application.</p>
+        <div data-role="footer" data-position="fixed">
+            <h1>Deescorp - All Rights Reserved</h1>
         </div>
     </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        <h3>Deescorp - All rigths reserved  </h3>
-    </div>
-    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

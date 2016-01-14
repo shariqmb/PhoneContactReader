@@ -1,23 +1,23 @@
 <?xml version ="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" versioncode = "1" version = "1.0.0">
-    <name>Phone Contacts Reader - Deescorp</name>
-    <content src="index.html"/>
-    <icon src="icon.png" width="256" height="256" />
-    <description>
-        Phone Contacts Reader - Deescorp
-    </description>
-
-    <author>
-        Deescorp
-    </author>
-
-    <preference name="phonegap-version" value="cli-5.2.0" />
-    <feature name="http://api.phonegap.com/1.0/contacts"/>
-    <feature name="http://api.phonegap.com/1.0/camera"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
-
-    <!-- for Android -->
-    <preference name="orientation" value="default" />
-    <preference name="android-minSdkVersion" value="9" />
+  <name>Phone Contacts Reader - Deescorp</name>
+  <content src="index.html"/>
+  <icon src="icon.png" width="256" height="256" />
+  <description>
+    Phone Contacts Reader - Deescorp
+  </description>
+  <author>
+    Deescorp
+  </author>
+  <gap:plugin name="org.apache.cordova.contacts" />
+  <preference name="phonegap-version" value="cli-5.2.0" />
+  <feature name="http://api.phonegap.com/1.0/contacts"/>
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+  <!-- for Android -->
+  <preference name="orientation" value="default" />
+  <preference name="android-minSdkVersion" value="9" />
 </widget>
 
