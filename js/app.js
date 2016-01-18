@@ -5,6 +5,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     deviceReadyDeferred.resolve();
+    var options = new ContactFindOptions();
+    options.filter = '';
+    options.multiple = true;
+    var filter = ['displayName'];
+    navigator.contacts.find(filter, onSuccess, onError, options);
 }
 
 $(document).one("mobileinit", function () {
@@ -14,11 +19,7 @@ $(document).one("mobileinit", function () {
 $.when(deviceReadyDeferred, jqmReadyDeferred).then(doWhenBothFrameworksLoaded);
 
 function doWhenBothFrameworksLoaded() {
-    var options = new ContactFindOptions();
-    options.filter = '';
-    options.multiple = true;
-    var filter = ['displayName'];
-    navigator.contacts.find(filter, onSuccess, onError, options);
+    
 }
 
 $(document).on("pageshow", function () {
